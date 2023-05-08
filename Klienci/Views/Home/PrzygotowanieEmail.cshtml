@@ -1,0 +1,24 @@
+﻿@model Klienci.Models.Klient
+
+<h2>Wysyłanie wiadomości e-mail do klienta: @Model.Imie @Model.Nazwisko</h2>
+
+<div>
+    <p>Imię: @Model.Imie</p>
+    <p>Nazwisko: @Model.Nazwisko</p>
+    <p>E-mail: @Model.Email</p>
+    <p>Telefon: @Model.NrTelefonu</p>
+</div>
+
+<form method="post">
+    <input type="hidden" name="klientId" value="@Model.Id" />
+    <div class="form-group">
+        <label>Nazwa wiadomości:</label>
+        <input type="text" name="nazwaWiadomosci" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Treść wiadomości:</label>
+        <textarea name="trescWiadomosci" class="form-control"></textarea>
+    </div>
+    <div style="margin-top: 10px;"></div>
+    <button type="submit" formmethod="post" formaction="@Url.Action("Wiadomosc", "Home")" class="btn btn-primary">Wyślij E-mail</button>
+</form>

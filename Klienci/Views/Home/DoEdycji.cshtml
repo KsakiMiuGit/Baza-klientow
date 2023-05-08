@@ -1,0 +1,41 @@
+﻿@model List<Klienci.Models.Klient>
+
+<h1>Klienci</h1>
+
+@if (Model != null && Model.Count > 0)
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Numer telefonu</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var klient in Model)
+            {
+                <tr>
+                    <td>@klient.Id</td>
+                    <td>@klient.Imie</td>
+                    <td>@klient.Nazwisko</td>
+                    <td>@klient.NrTelefonu</td>
+                    <td>@klient.Email</td>
+                    <td>
+                        <a asp-controller="Home" asp-action="EdytujKlienta" asp-route-id="@klient.Id" class="btn btn-primary">Edytuj</a>
+                        <a asp-controller="Home" asp-action="UsunKlienta" asp-route-id="@klient.Id" class="btn btn-danger">Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Brak klientów do wyświetlenia</p>
+}
+
+
